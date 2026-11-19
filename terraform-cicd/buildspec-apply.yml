@@ -1,0 +1,17 @@
+version: 0.2
+
+# Deploy ステージ用：承認後に apply を実行する
+env:
+  variables:
+    TF_VERSION: "1.10.5"
+
+phases:
+  install:
+    commands:
+      - curl -sSLo terraform.zip https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip
+      - unzip -q terraform.zip -d /usr/local/bin/
+      - terraform version
+  build:
+    commands:
+      - terraform init -input=false
+      - terraform apply -input=false -auto-approve

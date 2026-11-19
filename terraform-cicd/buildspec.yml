@@ -1,0 +1,19 @@
+version: 0.2
+
+# Build ステージ用：検証と plan まで（AWS は変更しない）
+env:
+  variables:
+    TF_VERSION: "1.10.5"
+
+phases:
+  install:
+    commands:
+      - curl -sSLo terraform.zip https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip
+      - unzip -q terraform.zip -d /usr/local/bin/
+      - terraform version
+  build:
+    commands:
+      - terraform init -input=false
+      - terraform fmt -check
+      - terraform validate
+      - terraform plan -input=false
