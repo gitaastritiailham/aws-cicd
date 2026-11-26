@@ -1,5 +1,22 @@
+# Terraform
 .terraform/
 *.tfstate
 *.tfstate.*
 *.tfvars
+!*.tfvars.example
+*.tfplan
 crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# その他
+*.zip

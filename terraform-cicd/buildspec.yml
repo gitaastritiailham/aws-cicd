@@ -13,7 +13,7 @@ phases:
       - terraform version
   build:
     commands:
-      - terraform init -input=false
-      - terraform fmt -check
-      - terraform validate
-      - terraform plan -input=false
+      - terraform -chdir=terraform-cicd init -input=false
+      - terraform -chdir=terraform-cicd fmt -check
+      - terraform -chdir=terraform-cicd validate
+      - terraform -chdir=terraform-cicd plan -input=false
